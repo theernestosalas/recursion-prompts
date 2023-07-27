@@ -19,8 +19,19 @@ var factorial = function(n) {
 // 2. Compute the sum of an array of integers.
 // sum([1,2,3,4,5,6]); // 21
 var sum = function(array) {
+    // Base Case, Return 0;
+    if (array.length === 0) {
+        return 0;
+    } else {
+        let lastElement = array[array.length -1];
+        let remainingArray = array.slice(0, array.length -1);
 
-
+        if (typeof lastElement === 'number') {
+            return lastElement + sum(remainingArray);
+        } else {
+            return sum(remainingArray);
+        }
+    }
 };
 
 // 3. Sum all numbers in an array containing nested arrays.
@@ -28,12 +39,32 @@ var sum = function(array) {
 var arraySum = function(array) {
     let sum = 0;
 
-    for ()
-
+    array.forEach((element) => {
+        if (Array.isArray(element)) {
+            sum += arraySum(element);
+        } else if (typeof element === 'number') {
+            sum += element;
+        }
+    });
+    return sum;
 };
 
 // 4. Check if a number is even.
 var isEven = function(n) {
+    if (n === 0) {
+        return true;
+    }
+
+    if (n === 1) {
+        return false;
+    }
+
+    if( n < 0) {
+        return isEven(-n);
+    }
+    // or you can use, n = Math.abs(n) to convert n to a positive.
+
+    return isEven(n-2);
 };
 
 // 5. Sum all integers below a given integer.
@@ -76,6 +107,13 @@ var palindrome = function(string) {
 // modulo(17,5) // 2
 // modulo(22,6) // 4
 var modulo = function(x, y) {
+    if (y === 0 ) {
+        return NaN;
+    }
+
+    while (x >= y) {
+
+    }
 };
 
 // 12. Write a function that multiplies two numbers without using the * operator or
